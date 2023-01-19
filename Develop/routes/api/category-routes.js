@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 
 router.get('/:id', async (req, res) => {
   // convert to try/catch
-  const data = await Category.find({id}, {include: [Product]})
+  const data = await Category.findOne({where: {id: req.params.id}}, {include: [Product]});
   res.json(data);
 });
 
